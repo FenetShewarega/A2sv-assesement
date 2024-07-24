@@ -14,7 +14,7 @@ class _CartScreenState extends State<CartScreen> {
   @override
   Widget build(BuildContext context) {
     final cart = Provider.of<Cart>(context);
-
+ int totalItemCount = cart.items.values.fold(0, (sum, item) => sum + item.quantity);
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -92,6 +92,21 @@ class _CartScreenState extends State<CartScreen> {
       ),
       body: Column(
         children: <Widget>[
+
+
+Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              'Total Items: $totalItemCount',
+              style: const TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+
+
+
           Expanded(
             child: ListView.builder(
               itemCount: cart.items.length,
