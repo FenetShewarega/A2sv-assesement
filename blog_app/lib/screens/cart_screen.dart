@@ -114,17 +114,26 @@ class _CartScreenState extends State<CartScreen> {
                   ),
                 ),
                 child: cart.items.containsKey(cart.items.keys.toList()[i])
-                    ? ListTile(
-                        leading: Image.network(
-                          cart.items.values.toList()[i].imageUrl,
-                          width: 50,
-                          height: 50,
-                          fit: BoxFit.cover,
+                    ? Container(
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: Colors.orange,
+                          width: 1,
                         ),
-                        title: Text(cart.items.values.toList()[i].title),
-                        subtitle: Text('Price: \$${cart.items.values.toList()[i].price}'),
-                        trailing: Text('Quantity: ${cart.items.values.toList()[i].quantity}'),
-                      )
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: ListTile(
+                          leading: Image.network(
+                            cart.items.values.toList()[i].imageUrl,
+                            width: 50,
+                            height: 50,
+                            fit: BoxFit.cover,
+                          ),
+                          title: Text(cart.items.values.toList()[i].title),
+                          subtitle: Text('Price: \$${cart.items.values.toList()[i].price}'),
+                          trailing: Text('Quantity: ${cart.items.values.toList()[i].quantity}'),
+                        ),
+                    )
                     : const SizedBox.shrink(),
               ),
             ),
